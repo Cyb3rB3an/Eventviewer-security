@@ -1,6 +1,6 @@
 Eventviewer - Security log failed login count
 
-The following script exams and extracted eventviewer- security log for failed login attempts.
+The following script examines and extracted eventviewer- security log for failed login attempts.
 
 To extract the security lof from eventviewer open event viewer right click the security log and expert
 Be sure to export as a .xml file format
