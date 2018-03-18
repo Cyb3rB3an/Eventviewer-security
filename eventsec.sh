@@ -3,7 +3,7 @@
 # by Cyb3rB3an
 # Twitter feed: @Cyb3rB3an 
 #
-# The following script examines and extracted eventviewer- security log for failed login attempts.
+# The following script examines an extracted eventviewer- security log for failed login attempts.
 # To extract the security lof from eventviewer open event viewer right click the security log and expert
 # Be sure to export as a .xml file format
 #
