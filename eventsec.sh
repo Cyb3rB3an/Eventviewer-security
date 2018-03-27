@@ -1,9 +1,9 @@
 ##################################################################################################################################################
-# Eventviewer - Security log failed login count
+# Eventviewer v1 - Security log failed login count
 # by Cyb3rB3an
 # Twitter feed: @Cyb3rB3an 
 #
-# The following script examines an extracted eventviewer- security log for failed login attempts.
+# The following script exams and extracted eventviewer- security log for failed login attempts.
 # To extract the security lof from eventviewer open event viewer right click the security log and expert
 # Be sure to export as a .xml file format
 #
@@ -30,15 +30,15 @@ exit 0
 fi
 
 # reads filename
-iisinput=$1
+secinput=$1
 
-echo -e "\e[32m----------------"
+echo -e "\e[32m----------------------------------"
 echo -e "Event Viewer Security Log  Script"
-echo -e "----------------"
+echo -e "----------------------------------"
 echo -e "\e[39m"
 
 
-secextract=($(grep '<EventID>4625</EventID>' $iisinput | cut -d "'" -f 25 | cut -d ">" -f 2 | cut -d "<" -f 1))
+secextract=($(grep '<EventID>4625</EventID>' $secinput | cut -d "'" -f 25 | cut -d ">" -f 2 | cut -d "<" -f 1))
 extracttotal=${#secextract[@]}
 
 #sort list
@@ -49,4 +49,25 @@ echo -e "--------------------------"
 echo -e "\e[39m"
 
 (IFS=$'\n'; sort <<< "${secextract[*]}") | uniq -c
+
+echo "Do you want the date info for user ? (y/n)"
+read userinput
+
+
+
+if [ "$userinput" == "y" ]; then
+echo "Enter username from list above"
+read userdata
+echo -e "\e[32m--------------------------------"
+echo "Date/Time stamp for $userdata"
+echo -e "--------------------------------"
+echo -e "\e[39m"
+cat $secinput | grep 4625 | grep $userdata | cut -d "'" -f 8
+fi
+
+
+
+
+
+
 
